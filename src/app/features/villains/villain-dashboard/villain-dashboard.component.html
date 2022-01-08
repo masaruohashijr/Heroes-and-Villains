@@ -1,0 +1,10 @@
+<app-villain-menu></app-villain-menu>
+<h2>Top Villains</h2>
+<app-villain-search></app-villain-search>
+<div class="villains-menu">
+  <a *ngFor="let villain of villains"
+      routerLink="/villain/edit/{{villain.id}}">
+      {{villain.name}}
+  </a>
+</div>
+<br/>

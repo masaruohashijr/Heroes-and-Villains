@@ -1,35 +1,57 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './service/in-memory-data.service';
-import { HeroSearchComponent } from './hero-search/hero-search.component';
-import { HeroFormComponent } from './hero-form/hero-form.component';
+import { InMemDataService } from './service/in-mem-data/in-mem-data.service';
+import { HeroesComponent } from './features/heroes/heroes.component';
+import { HeroDashboardComponent } from './features/heroes/hero-dashboard/hero-dashboard.component';
+import { HeroSearchComponent } from './features/heroes/hero-search/hero-search.component';
+import { HeroMenuComponent } from './features/heroes/hero-menu/hero-menu.component';
+import { HeroFormComponent } from './features/heroes/hero-form/hero-form.component';
+import { VillainsComponent } from './features/villains/villains.component';
+import { VillainDashboardComponent } from './features/villains/villain-dashboard/villain-dashboard.component';
+import { VillainSearchComponent } from './features/villains/villain-search/villain-search.component';
+import { VillainMenuComponent } from './features/villains/villain-menu/villain-menu.component';
+import { VillainFormComponent } from './features/villains/villain-form/villain-form.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { MaterialExampleModule } from '../material.module';
+import { Sidenav } from './sidenav/sidenav';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent,
+    HeroesComponent,
+    HeroDashboardComponent,
     HeroSearchComponent,
-    HeroFormComponent
+    HeroMenuComponent,
+    HeroFormComponent,
+    VillainsComponent,
+    VillainDashboardComponent,
+    VillainSearchComponent,
+    VillainMenuComponent,
+    VillainFormComponent,
+    Sidenav
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+      InMemDataService, { dataEncapsulation: false }
+    ),
+    MatNativeDateModule,
+    MaterialExampleModule,
+    MatSliderModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

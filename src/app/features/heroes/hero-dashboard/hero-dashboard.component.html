@@ -1,0 +1,10 @@
+<app-hero-menu></app-hero-menu>
+<h2>Top Heroes</h2>
+<app-hero-search></app-hero-search>
+<div class="heroes-menu">
+  <a *ngFor="let hero of heroes"
+      routerLink="/hero/edit/{{hero.id}}">
+      {{hero.name}}
+  </a>
+</div>
+<br/>

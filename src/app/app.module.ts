@@ -8,12 +8,12 @@ import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemDataService } from './service/in-mem-data/in-mem-data.service';
-import { HeroesComponent } from './features/heroes/heroes.component';
+import { HeroListComponent } from './features/heroes/hero-list/hero-list.component';
 import { HeroDashboardComponent } from './features/heroes/hero-dashboard/hero-dashboard.component';
 import { HeroSearchComponent } from './features/heroes/hero-search/hero-search.component';
 import { HeroMenuComponent } from './features/heroes/hero-menu/hero-menu.component';
 import { HeroFormComponent } from './features/heroes/hero-form/hero-form.component';
-import { VillainsComponent } from './features/villains/villains.component';
+import { VillainListComponent } from './features/villains/villain-list/villain-list.component';
 import { VillainDashboardComponent } from './features/villains/villain-dashboard/villain-dashboard.component';
 import { VillainSearchComponent } from './features/villains/villain-search/villain-search.component';
 import { VillainMenuComponent } from './features/villains/villain-menu/villain-menu.component';
@@ -27,12 +27,12 @@ import { MatNativeDateModule } from '@angular/material/core';
   declarations: [
     AppComponent,
     MessagesComponent,
-    HeroesComponent,
+    HeroListComponent,
     HeroDashboardComponent,
     HeroSearchComponent,
     HeroMenuComponent,
     HeroFormComponent,
-    VillainsComponent,
+    VillainListComponent,
     VillainDashboardComponent,
     VillainSearchComponent,
     VillainMenuComponent,

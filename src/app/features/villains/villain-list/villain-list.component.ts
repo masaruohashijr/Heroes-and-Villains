@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core'
-import { Villain } from '../../model/villain'
-import { VillainService } from '../../service/villain/villain.service';
-import { MessageService as MessageService } from '../../service/message/message.service';
+import { Villain } from 'src/app/model/villain';
+import { MessageService } from 'src/app/service/message/message.service';
+import { VillainService } from 'src/app/service/villain/villain.service';
 
 @Component({
-  selector: 'app-villains',
-  templateUrl: './villains.component.html',
-  styleUrls: ['./villains.component.css']
+  selector: 'app-villain-list',
+  templateUrl: './villain-list.component.html',
+  styleUrls: ['./villain-list.component.css']
 })
-export class VillainsComponent implements OnInit {
+export class VillainListComponent implements OnInit {
   villains: Villain[] = [];
   selectedVillain?:Villain;
   constructor(private villainService: VillainService, private messageService: MessageService) {}

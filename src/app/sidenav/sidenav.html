@@ -6,12 +6,30 @@
     <h1 class="app-name">{{title}}</h1>
   </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" #navcontainer>
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
-      <mat-nav-list style="180px">
-        <a mat-list-item routerLink="/hero/dashboard">Heroes</a>
-        <a mat-list-item routerLink="/villain/dashboard">Villains</a>
+      <mat-nav-list>
+        <a mat-list-item (click)="toggleMenu('hero')">
+          <mat-icon color="primary" mat-list-icon>face</mat-icon>Heroes
+          <mat-icon *ngIf="!showMenu_Hero">chevron_right</mat-icon>
+          <mat-icon *ngIf="showMenu_Hero">expand_more</mat-icon>
+        </a>
+        <mat-nav-list class="sidenav-submenu" *ngIf="showMenu_Hero">
+          <a routerLink="/hero/dashboard" mat-list-item><mat-icon color="primary" mat-list-icon>dashboard</mat-icon>Dashboard</a>
+          <a routerLink="/hero/list" mat-list-item><mat-icon color="primary" mat-list-icon>view_list</mat-icon>List</a>
+          <a routerLink="/hero/add" mat-list-item><mat-icon color="primary" mat-list-icon>add_circle</mat-icon>Novo</a>
+        </mat-nav-list>
+        <a mat-list-item (click)="toggleMenu('villain')">
+          <mat-icon style="color:'#ff5131'" mat-list-icon>face</mat-icon>Villains
+          <mat-icon *ngIf="!showMenu_Villain">chevron_right</mat-icon>
+          <mat-icon *ngIf="showMenu_Villain">expand_more</mat-icon>
+        </a>
+        <mat-nav-list class="sidenav-submenu" *ngIf="showMenu_Villain">
+          <a routerLink="/villain/dashboard" mat-list-item><mat-icon style="color:'#ff5131'" mat-list-icon>dashboard</mat-icon>Dashboard</a>
+          <a routerLink="/villain/list" mat-list-item><mat-icon style="color:'#ff5131'" mat-list-icon>view_list</mat-icon>List</a>
+          <a routerLink="/villain/add" mat-list-item><mat-icon style="color:'#ff5131'" mat-list-icon>add_circle</mat-icon>Novo</a>
+        </mat-nav-list>
       </mat-nav-list>
     </mat-sidenav>
 

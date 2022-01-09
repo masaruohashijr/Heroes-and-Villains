@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core'
-import { Hero } from '../../model/hero'
-import { HeroService } from '../../service/hero/hero.service';
-import { MessageService as MessageService } from '../../service/message/message.service';
+import { Hero } from 'src/app/model/hero';
+import { HeroService } from 'src/app/service/hero/hero.service';
+import { MessageService } from 'src/app/service/message/message.service';
 
 @Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  selector: 'app-hero-list',
+  templateUrl: './hero-list.component.html',
+  styleUrls: ['./hero-list.component.css']
 })
-export class HeroesComponent implements OnInit {
+export class HeroListComponent implements OnInit {
   heroes: Hero[] = [];
   selectedHero?:Hero;
   constructor(private heroService: HeroService, private messageService: MessageService) {}

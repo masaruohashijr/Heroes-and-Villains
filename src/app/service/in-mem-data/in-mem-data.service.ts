@@ -21,15 +21,15 @@ export class InMemDataService implements InMemoryDbService {
       { id: 20, name: 'Colossus', power: 'Really Smart', alterEgo: 'AlterEgo' }
     ];
     const villains = [
-      { id: 11, name: 'Ultron', power: 'Really Smart', alterEgo: 'AlterEgo' },
+      { id: 11, name: 'Doctor Octopus', power: 'Really Smart', alterEgo: 'AlterEgo' },
       { id: 12, name: 'Galactus', power: 'Really Smart', alterEgo: 'AlterEgo' },
       { id: 13, name: 'Kang the Conqueror', power: 'Really Smart', alterEgo: 'AlterEgo' },
-      { id: 14, name: 'Bullseye', power: 'Really Smart', alterEgo: 'AlterEgo' },
+      { id: 14, name: 'Thanos', power: 'Really Smart', alterEgo: 'AlterEgo' },
       { id: 15, name: 'Venom', power: 'Really Smart', alterEgo: 'AlterEgo' },
       { id: 16, name: 'Green Goblin', power: 'Really Smart', alterEgo: 'AlterEgo' },
-      { id: 17, name: 'Juggernaut', power: 'Really Smart', alterEgo: 'AlterEgo' },
-      { id: 18, name: 'Sabretooth', power: 'Really Smart', alterEgo: 'AlterEgo' },
-      { id: 19, name: 'Mystique', power: 'Really Smart', alterEgo: 'AlterEgo' },
+      { id: 17, name: 'Electron', power: 'Really Smart', alterEgo: 'AlterEgo' },
+      { id: 18, name: 'Kraven The Hunter', power: 'Really Smart', alterEgo: 'AlterEgo' },
+      { id: 19, name: 'Mysterio', power: 'Really Smart', alterEgo: 'AlterEgo' },
       { id: 20, name: 'Kingpin', power: 'Really Smart', alterEgo: 'AlterEgo' }
     ];
     return {heroes, villains};

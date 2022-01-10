@@ -31,10 +31,10 @@ export class VillainFormComponent {
   submitted = false;
 
   onSubmit() {
-    if (this.modelVillain.id) {
-      this.villainService.updateVillain(this.modelVillain).subscribe(villain => this.modelVillain = villain)
-    } else {
+    if (!this.modelVillain.id) {
       this.villainService.addVillain(this.modelVillain).subscribe(villain => this.modelVillain = villain)
+    } else {
+      this.villainService.updateVillain(this.modelVillain).subscribe(villain => this.modelVillain = villain)
       this.getVillain(this.modelVillain.id)
     }
     this.submitted = true;

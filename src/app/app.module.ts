@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HeroDataService } from './service/in-mem-data/hero-data.service';
 import { InMemDataService } from './service/in-mem-data/in-mem-data.service';
 import { HeroListComponent } from './features/heroes/hero-list/hero-list.component';
 import { HeroDashboardComponent } from './features/heroes/hero-dashboard/hero-dashboard.component';

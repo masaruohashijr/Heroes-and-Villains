@@ -12,7 +12,7 @@ export class VillainService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private villainsUrl = 'api/villains';
+  private villainsUrl = 'api/villain';
 
   constructor(
     private http: HttpClient,

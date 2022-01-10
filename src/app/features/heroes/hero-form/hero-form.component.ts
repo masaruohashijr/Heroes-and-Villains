@@ -28,7 +28,6 @@ export class HeroFormComponent {
   powers = ['Really Smart', 'Super Flexible',
     'Super Hot', 'Weather Changer'];
 
-
   submitted = false;
 
   onSubmit() { 

@@ -46,7 +46,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemDataService, { dataEncapsulation: false }
+      InMemDataService, { dataEncapsulation: false },
     ),
     MatNativeDateModule,
     MaterialExampleModule,

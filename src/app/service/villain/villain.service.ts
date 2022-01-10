@@ -54,6 +54,7 @@ export class VillainService {
       catchError(this.handleError<any>('updateVillain'))
     );
   }
+  
   deleteVillain(id: number): Observable<Villain> {
     const url = `${this.villainsUrl}/${id}`;
 

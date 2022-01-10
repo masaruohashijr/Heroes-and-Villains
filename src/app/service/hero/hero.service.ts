@@ -55,6 +55,7 @@ export class HeroService {
       catchError(this.handleError<any>('updateHero'))
     );
   }
+  
   deleteHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
 

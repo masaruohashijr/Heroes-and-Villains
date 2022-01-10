@@ -32,13 +32,13 @@ export class HeroFormComponent {
   submitted = false;
 
   onSubmit() { 
-    if(this.model.id != 0){
-      console.log("this.model.id: "+this.model.id)
+    if(!this.model.id){
       this.heroService.addHero(this.model).subscribe(hero => this.model = hero)
     } else {
+      this.heroService.updateHero(this.model).subscribe(hero => this.model = hero)
       this.heroService.getHero(this.model.id).subscribe(hero => this.model = hero)
-      this.submitted = true; 
     }
+    this.submitted = true; 
   }
   newHero() {
     this.model = new Hero('', '');

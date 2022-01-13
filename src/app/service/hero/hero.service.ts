@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { MessageService } from '../message/message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { PowerService } from '../power/power.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class HeroService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private powerService: PowerService) { }
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
@@ -55,10 +57,9 @@ export class HeroService {
       catchError(this.handleError<any>('updateHero'))
     );
   }
-  
+
   deleteHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
-
     return this.http.delete<Hero>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted hero id=${id}`)),
       catchError(this.handleError<Hero>('deleteHero'))

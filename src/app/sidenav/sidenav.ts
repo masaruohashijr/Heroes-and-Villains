@@ -17,6 +17,7 @@ export class Sidenav implements OnDestroy {
   opened!: boolean;
   showMenu_Hero = false;
   showMenu_Villain = false;
+  showMenu_Power = false;
   
   private _mobileQueryListener: () => void;
 
@@ -34,10 +35,12 @@ export class Sidenav implements OnDestroy {
   }
   
   toggleMenu(feature:string) {
-    if(feature == 'hero'){
+    if(feature === 'hero'){
       this.showMenu_Hero = !this.showMenu_Hero;
-    } else {
+    } else if(feature === 'villain'){
       this.showMenu_Villain = !this.showMenu_Villain;
+    } else {
+      this.showMenu_Power = !this.showMenu_Power;
     }
     setTimeout(() => this.navcontainer.updateContentMargins());
   }

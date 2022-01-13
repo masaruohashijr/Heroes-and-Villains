@@ -14,9 +14,9 @@
     </div>
 
     <div class="form-group">
-        <label for="power">Hero Power</label>
-        <select class="form-control" id="power" required [ngModel]="model?.power" (ngModelChange)="model.power = $event" name="power">
-            <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+        <label for="powerId">Hero Power</label>
+        <select class="form-control"  [ngModel]="model?.powerId" (ngModelChange)="model.powerId = $event" id="powerId" required name="powerId">
+            <option *ngFor="let power of powers" [value]="power.id">{{power.name}}</option>
         </select>
     </div>
 
@@ -37,7 +37,11 @@
     </div>
     <div class="row">
       <div class="col-xs-3">Power</div>
-      <div class="col-xs-9">{{ model?.power }}</div>
+      <div class="col-xs-9" *ngFor="let power of powers">
+        <span *ngIf="power.id == model.powerId">
+          {{ power.name }}
+        </span>
+      </div>
     </div>
     <br>
     <button class="btn btn-primary" (click)="goBack()">Go Back</button>

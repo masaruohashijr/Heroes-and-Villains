@@ -5,20 +5,17 @@ import { DataService } from './data.service';
 @Injectable({
   providedIn: 'root'
 })
-export class VillainDataService extends DataService {
-  putVillain(villains: any[], reqInfo: RequestInfo) {
+export class PowerDataService extends DataService {
+  putPower(powers: any[], reqInfo: RequestInfo) {
     return reqInfo.utils.createResponse$(() => {
-      const info = this.getInfoFromVillainUrl(reqInfo.req.url);
-      console.log("info.id"+info.id)
-
+      const info = this.getInfoFromPowerUrl(reqInfo.req.url);
       let data: any;
 
       if (info.id) {
-        data = villains.find((b) => b.id === info.id);
+        data = powers.find((b) => b.id === info.id);
       } else {
-        data = villains
+        data = powers
       }
-      console.log(villains.find((b) => b.id === info.id))
       const body = reqInfo.utils.getJsonBody(reqInfo.req)
       Object.assign(info, body);
       
@@ -29,46 +26,42 @@ export class VillainDataService extends DataService {
           status: STATUS.OK
         } :
         {
-          body: { error: `Hero with id = '\$\{info.id\}' not found` },
+          body: { error: `Power with id = '\$\{info.id\}' not found` },
           status: STATUS.NOT_FOUND
         };
-        console.log(options.status)
-        console.log(data.data)
       return this.finishOptions(options, reqInfo);
     });
   }
-  public getVillains(villains: any[], reqInfo: RequestInfo) {
+
+  public getPowers(powers: any[], reqInfo: RequestInfo) {
     return reqInfo.utils.createResponse$(() => {
-      const info = this.getInfoFromVillainUrl(reqInfo.req.url);
+      const info = this.getInfoFromPowerUrl(reqInfo.req.url);
       let data: any;
-      console.log("info: "+info.id)
+
       if (info.id) {
-        data = villains.find((b) => b.id === info.id);
-        console.log("info: "+info.id)
+        data = powers.find((b) => b.id === info.id);
       } else {
-        data = villains
-        console.log("data = villains")
+        data = powers
       }
 
       const dataEncapsulation = reqInfo.utils.getConfig().dataEncapsulation;
-      console.log("data: "+data)
       const options: ResponseOptions = data ?
         {
           body: dataEncapsulation ? { data } : data,
-          status: STATUS.OK
+          status: 200
         } :
         {
-          body: { error: `Villain with id = '\$\{info.id\}' not found` },
-          status: STATUS.NOT_FOUND
+          body: { error: `Power with id = '\$\{info.id\}' not found` },
+          status: 404
         };
       return this.finishOptions(options, reqInfo);
     });
   }
 
 
-  public getInfoFromVillainUrl(url: string): any {
+  public getInfoFromPowerUrl(url: string): any {
     console.log(url)
-    const regex = /api\/villain\/(.*)$/i;
+    const regex = /api\/power\/(.*)$/i;
     const matches = regex.exec(url);
     const parts = matches && matches.length === 2 ? matches[1].split('/') : [];
     console.log(parts[0])
@@ -83,7 +76,5 @@ export class VillainDataService extends DataService {
     };
   }
 
-  constructor() { 
-    super();
-  }
+  constructor() { super() }
 }

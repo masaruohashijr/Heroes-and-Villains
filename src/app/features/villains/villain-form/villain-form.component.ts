@@ -1,6 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Power } from 'src/app/model/power';
+import { PowerService } from 'src/app/service/power/power.service';
 import { Villain } from '../../../model/villain';
 import { VillainService } from '../../../service/villain/villain.service';
 @Component({
@@ -9,14 +11,18 @@ import { VillainService } from '../../../service/villain/villain.service';
   styleUrls: ['./villain-form.component.css']
 })
 export class VillainFormComponent {
-  public modelVillain: Villain = new Villain(
-    '', '', ''
+  
+  powers: Array<Power> = [];
+
+  public model: Villain = new Villain(
+    '', ''
   );
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private villainService: VillainService
+    private villainService: VillainService,
+    private powerService: PowerService,
   ) {
     const id = Number(this.route.snapshot.paramMap.get('id'))
     if (id!=0) {
@@ -25,35 +31,37 @@ export class VillainFormComponent {
       this.newVillain();
     }
   }
-  powers = ['Really Smart', 'Super Flexible',
-    'Super Hot', 'Weather Changer'];
-
   submitted = false;
+  ngOnInit(): void {
+    this.loadPowers();
+  }
+  loadPowers(): void {
+    this.powerService.getPowers().subscribe(powers=>this.powers = powers);
+  }
 
   onSubmit() {
-    if (!this.modelVillain.id) {
-      this.villainService.addVillain(this.modelVillain).subscribe(villain => this.modelVillain = villain)
+    if (!this.model.id) {
+      this.villainService.addVillain(this.model).subscribe(villain => this.model = villain)
     } else {
-      this.villainService.updateVillain(this.modelVillain).subscribe(villain => this.modelVillain = villain)
-      this.getVillain(this.modelVillain.id)
+      this.villainService.updateVillain(this.model).subscribe(villain => this.model = villain)
+      this.getVillain(this.model.id)
     }
     this.submitted = true;
   }
   newVillain() {
-    this.modelVillain = new Villain('', '');
+    this.model = new Villain('', '');
   }
   getVillain(id: number): void {
-    this.villainService.getVillain(id).subscribe(villain => this.modelVillain = villain)
+    this.villainService.getVillain(id).subscribe(villain => this.model = villain)
   }
   editVillain(id: number): void {
-    this.villainService.getVillain(id).subscribe(villain => this.modelVillain = villain)
+    this.villainService.getVillain(id).subscribe(villain => this.model = villain)
     this.submitted = true;
   }
 
   goBack() {
     this.submitted = false;
-    this.getVillain(this.modelVillain.id)
-    //this.router.navigate(['/villain/edit/', { id: this.model.id }]);
+    this.getVillain(this.model.id)
   }
 
 }

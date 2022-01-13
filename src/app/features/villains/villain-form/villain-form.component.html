@@ -3,22 +3,22 @@
 <div [hidden]="submitted">
 <form (ngSubmit)="onSubmit()" #villainForm="ngForm">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" required [(ngModel)]="modelVillain.name" name="name" #name="ngModel">
+    <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
     <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
         Name is required
     </div>
 
     <div class="form-group">
         <label for="alterEgo">Alter Ego</label>
-        <input type="text" class="form-control" id="alterEgo" [(ngModel)]="modelVillain.alterEgo" name="alterEgo">
+        <input type="text" class="form-control" id="alterEgo" [(ngModel)]="model.alterEgo" name="alterEgo">
     </div>
 
     <div class="form-group">
-        <label for="power">Power</label>
-        <select class="form-control" id="power" required [(ngModel)]="modelVillain.power" name="power">
-            <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
-        </select>
-    </div>
+      <label for="powerId">Villain Power</label>
+      <select class="form-control"  [ngModel]="model?.powerId" (ngModelChange)="model.powerId = $event" id="powerId" required name="powerId">
+          <option *ngFor="let power of powers" [value]="power.id">{{power.name}}</option>
+      </select>
+  </div>
 
     <button type="button" class="btn btn-default" (click)="newVillain(); villainForm.reset()">New Villain</button>
     <button type="submit" class="btn btn-success" [disabled]="!villainForm.form.valid">Submit</button>
@@ -29,15 +29,19 @@
     <h2>You submitted the following:</h2>
     <div class="row">
       <div class="col-xs-3">Name</div>
-      <div class="col-xs-9">{{ modelVillain.name }}</div>
+      <div class="col-xs-9">{{ model.name }}</div>
     </div>
     <div class="row">
       <div class="col-xs-3">Alter Ego</div>
-      <div class="col-xs-9">{{ modelVillain.alterEgo }}</div>
+      <div class="col-xs-9">{{ model.alterEgo }}</div>
     </div>
     <div class="row">
       <div class="col-xs-3">Power</div>
-      <div class="col-xs-9">{{ modelVillain.power }}</div>
+      <div class="col-xs-9" *ngFor="let power of powers">
+        <span *ngIf="power.id == model.powerId">
+          {{ power.name }}
+        </span>
+      </div>
     </div>
     <br>
     <button class="btn btn-primary" (click)="goBack()">Go Back</button>

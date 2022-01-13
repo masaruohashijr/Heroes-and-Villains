@@ -1,0 +1,10 @@
+<app-power-menu></app-power-menu>
+<h2>Top Powers</h2>
+<app-power-search></app-power-search>
+<div class="powers-menu">
+  <a *ngFor="let power of powers"
+      routerLink="/power/edit/{{power.id}}">
+      {{power.name}}
+  </a>
+</div>
+<br/>

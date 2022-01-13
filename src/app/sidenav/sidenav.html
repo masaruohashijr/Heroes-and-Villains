@@ -67,9 +67,26 @@
             <mat-icon style="color:'#ff5131'" mat-list-icon>add_circle</mat-icon>Add New
           </a>
         </mat-nav-list>
+        <a mat-list-item (click)="toggleMenu('power')">
+          <mat-icon style="color:'#1e88e5'" mat-list-icon>face</mat-icon>Powers
+          <span class="toolbar-spacer"></span>
+          <mat-icon *ngIf="!showMenu_Power">chevron_right</mat-icon>
+          <mat-icon *ngIf="showMenu_Power">expand_more</mat-icon>
+        </a>
+        <mat-nav-list class="sidenav-submenu" *ngIf="showMenu_Power">
+          <a routerLink="/power/dashboard" mat-list-item>
+            <mat-icon style="color:'#1e88e5'" mat-list-icon>dashboard</mat-icon>Dashboard
+          </a>
+          <a routerLink="/power/list" mat-list-item>
+            <mat-icon style="color:'#1e88e5'" mat-list-icon>view_list</mat-icon>List
+          </a>
+          <a routerLink="/power/add" mat-list-item>
+            <mat-icon style="color:'#1e88e5'" mat-list-icon>add_circle</mat-icon>Add New
+          </a>
+        </mat-nav-list>
       </mat-nav-list>
-    </mat-sidenav>
 
+    </mat-sidenav>
     <mat-sidenav-content>
       <router-outlet></router-outlet>
       <app-messages></app-messages>

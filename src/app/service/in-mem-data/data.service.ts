@@ -1,5 +1,5 @@
   import { Injectable } from '@angular/core';
-  import { RequestInfo, ResponseOptions } from 'angular-in-memory-web-api';
+  import { RequestInfo, ResponseOptions, STATUS } from 'angular-in-memory-web-api';
 
   @Injectable({
     providedIn: 'root'
@@ -11,7 +11,7 @@
       if (options.status) {
         options.statusText = this.getStatusText(options.status);
       } else {
-        options.statusText = this.getStatusText(200);
+        options.statusText = this.getStatusText(STATUS.OK);
       }
       options.headers = headers;
       options.url = url;
@@ -21,11 +21,11 @@
     
     protected getStatusText(httpStatusCode: number): string {
     switch (httpStatusCode) {
-      case 200:
+      case STATUS.OK:
         return 'Ok';
-      case 404:
+      case STATUS.NOT_FOUND:
         return 'Not found';
-      case 500:
+      case STATUS.INTERNAL_SERVER_ERROR:
         return 'Internal server error';
       default:
         return '';

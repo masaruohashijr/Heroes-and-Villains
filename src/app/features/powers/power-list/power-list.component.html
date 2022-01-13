@@ -1,0 +1,13 @@
+<app-power-menu></app-power-menu>
+<h2>My Powers</h2>
+<app-power-search></app-power-search>
+<ul class="power-list">
+  <li *ngFor="let power of powers">
+    <a routerLink="/power/edit/{{power.id}}">
+      <span class="badge">{{power.id}}</span> {{power.name}}
+    </a>
+    <button class="delete" title="delete power"
+      (click)="delete(power)">x</button>
+  </li>
+</ul>
+

@@ -6,7 +6,7 @@ import { DataService } from './data.service';
   providedIn: 'root'
 })
 export class HeroDataService extends DataService {
-  putHeroes(heroes: any[], reqInfo: RequestInfo) {
+  putHero(heroes: any[], reqInfo: RequestInfo) {
     return reqInfo.utils.createResponse$(() => {
       const info = this.getInfoFromHeroUrl(reqInfo.req.url);
       let data: any;
@@ -64,15 +64,8 @@ export class HeroDataService extends DataService {
     const regex = /api\/hero\/(.*)$/i;
     const matches = regex.exec(url);
     const parts = matches && matches.length === 2 ? matches[1].split('/') : [];
-    console.log(parts[0])
-    console.log(parts[1])
-    console.log(parts[2])
-    console.log(parts[3])
     return {
       id: +parts[0],
-      name: +parts[1],
-      power: +parts[2],
-      alterEgo: parts[3]
     };
   }
 
